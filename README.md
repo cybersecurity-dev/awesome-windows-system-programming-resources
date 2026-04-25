@@ -1,2 +1,1 @@
-# awesome-windows-system-programming-resources
-Awesome Windows System Programming Resources
+# **`Awesome`** Windows System Programming Resources
