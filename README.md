@@ -32,6 +32,9 @@
 
 ### Videos
 
+### Video Series
+- [Windows System Programming in C/C++ by @ASystemProgrammingChannel](https://youtube.com/playlist?list=PLDpFwQfbVxIw_rysNCHPeGmh6wIUnhjrt&si=iJ3z__JQXribLRPF)
+- [Windows System Programming by @pentesteracademy](https://youtube.com/playlist?list=PLRJWiLCmxyxiSujVWVL-SpLelqU7L3urx&si=AR25IlMyD1cPqKBO)
 
 ##
 
@@ -43,5 +46,8 @@ You can access the my other awesome lists [here](https://cyberthreatdefence.com/
 
 ### Contributors
 [Thanks goes to these contributors](https://github.com/cybersecurity-dev/awesome-windows-system-programming-resources/graphs/contributors)!
+
+### License
+[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](http://creativecommons.org/publicdomain/zero/1.0)
 
 [🔼 Back to top](#awesome-windows-system-programming-resources)
