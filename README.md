@@ -9,41 +9,41 @@
 flowchart TB
     SRC["Application Source Code<br/>C or C++"]
 
-    SRC --> API["Windows API call<br/>CreateFile, ReadFile or VirtualAlloc"]
+    SRC --> API["Windows API call<br/>CreateFile,<br/>ReadFile or<br/>VirtualAlloc"]
 
     subgraph USER["User Mode"]
-        API --> WIN32["Win32 subsystem DLL<br/>Kernel32, Advapi32 or User32"]
+        API --> WIN32["Win32 subsystem DLL<br/>Kernel32,<br/>Advapi32<br/>or User32"]
         WIN32 --> KBASE["KernelBase.dll"]
-        KBASE --> NTDLL["NTDLL native API"]
-        NTDLL --> STUB["System-call stub"]
+        KBASE --> NTDLL["NTDLL<br/>native API"]
+        NTDLL --> STUB["System-call<br/>stub"]
     end
 
-    STUB --> TRANSITION["User-to-kernel transition"]
+    STUB --> TRANSITION["User-to-kernel<br/>transition"]
 
-    subgraph KMODE["Kernel Mode"]
-        TRANSITION --> DISPATCH["System-service dispatcher"]
-        DISPATCH --> EXEC{"Requested service"}
+    subgraph KMODE["Kernel<br/>Mode"]
+        TRANSITION --> DISPATCH["System-service<br/>dispatcher"]
+        DISPATCH --> EXEC{"Requested<br/>service"}
 
-        EXEC --> OM["Object Manager"]
-        EXEC --> PM["Process Manager"]
-        EXEC --> MM["Memory Manager"]
-        EXEC --> IO["I/O Manager"]
-        EXEC --> SRM["Security Reference Monitor"]
+        EXEC --> OM["Object<br/>Manager"]
+        EXEC --> PM["Process<br/>Manager"]
+        EXEC --> MM["Memory<br/>Manager"]
+        EXEC --> IO["I/O<br/>Manager"]
+        EXEC --> SRM["Security<br/>Reference<br/>Monitor"]
 
-        IO --> DRIVER["File-system or device driver"]
-        DRIVER --> HAL["Hardware Abstraction Layer"]
+        IO --> DRIVER["File-system or<br/>device<br/>driver"]
+        DRIVER --> HAL["Hardware<br/>Abstraction<br/>Layer"]
     end
 
     HAL --> HW["Hardware"]
 
-    OM --> RESULT["Status and result"]
+    OM --> RESULT["Status<br/>and<br/>result"]
     PM --> RESULT
     MM --> RESULT
     IO --> RESULT
     SRM --> RESULT
 
-    RESULT --> RETURN["Return to user mode"]
-    RETURN --> ERROR["Convert status to<br/>API result or error code"]
+    RESULT --> RETURN["Return to<br/>user mode"]
+    RETURN --> ERROR["Convert<br/>status to<br/>API result<br/>or<br/>error code"]
     ERROR --> SRC
 
     classDef source fill:#263238,color:#fff,stroke:#111,stroke-width:2px
@@ -77,6 +77,96 @@ flowchart TB
     <img src="https://github.com/cybersecurity-dev/cybersecurity-dev/blob/main/assets/bar.gif">
 </p>
 
+```mermaid
+flowchart LR
+    STUDENT["Student or Developer"]
+
+    subgraph DEVELOPMENT["Development Environment"]
+        VS["Visual Studio"]
+        VSCODE["Visual Studio Code"]
+        SDK["Windows SDK"]
+        MSVC["MSVC Compiler"]
+        CMAKE["CMake"]
+        NUGET["NuGet"]
+    end
+
+    subgraph BUILD["Build Pipeline"]
+        PRE["Preprocessor"]
+        COMPILER["Compiler"]
+        OBJ["Object Files"]
+        LINKER["Linker"]
+        PDB["Program Database"]
+        EXE["EXE or DLL"]
+    end
+
+    subgraph RUNTIME["Windows<br/>Runtime<br/>Environment"]
+        APP["Application"]
+        DLL["System<br/>DLLs"]
+        SUBSYS["Windows<br/>Subsystem"]
+        KERNEL["Windows<br/>Kernel"]
+        DRIVER["Device<br/>Drivers"]
+        HW["Hardware"]
+    end
+
+    subgraph ANALYSIS["Analysis<br/>Toolkit"]
+        DEBUGGER["Visual<br/>Studio<br/>Debugger"]
+        WINDBG["WinDbg"]
+        PROCMON["Process<br/>Monitor"]
+        PROCEXP["Process<br/>Explorer"]
+        DUMPBIN["Dumpbin"]
+        ETW["ETW"]
+        WPA["Windows<br/>Performance<br/>Analyzer"]
+    end
+
+    STUDENT --> VS
+    STUDENT --> VSCODE
+
+    VS --> MSVC
+    VSCODE --> CMAKE
+    SDK --> MSVC
+    NUGET --> VS
+
+    MSVC --> PRE
+    CMAKE --> PRE
+    PRE --> COMPILER
+    COMPILER --> OBJ
+    OBJ --> LINKER
+    LINKER --> EXE
+    LINKER --> PDB
+
+    EXE --> APP
+    APP --> DLL
+    DLL --> SUBSYS
+    SUBSYS --> KERNEL
+    KERNEL --> DRIVER
+    DRIVER --> HW
+
+    APP -.-> DEBUGGER
+    APP -.-> PROCMON
+    APP -.-> PROCEXP
+    EXE -.-> DUMPBIN
+    PDB -.-> WINDBG
+    KERNEL -.-> WINDBG
+    APP -.-> ETW
+    ETW --> WPA
+
+    DEBUGGER --> STUDENT
+    WINDBG --> STUDENT
+    PROCMON --> STUDENT
+    WPA --> STUDENT
+
+    classDef person fill:#263238,color:#fff,stroke:#111,stroke-width:2px
+    classDef development fill:#e3f2fd,color:#111,stroke:#1e88e5
+    classDef build fill:#e8f5e9,color:#111,stroke:#43a047
+    classDef runtime fill:#fff3e0,color:#111,stroke:#fb8c00
+    classDef analysis fill:#f3e5f5,color:#111,stroke:#8e24aa
+
+    class STUDENT person
+    class VS,VSCODE,SDK,MSVC,CMAKE,NUGET development
+    class PRE,COMPILER,OBJ,LINKER,PDB,EXE build
+    class APP,DLL,SUBSYS,KERNEL,DRIVER,HW runtime
+    class DEBUGGER,WINDBG,PROCMON,PROCEXP,DUMPBIN,ETW,WPA analysis
+```
 ## 📖 Contents
 - [Books](#books)
 - [Videos](#videos)
